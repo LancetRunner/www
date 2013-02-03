@@ -138,13 +138,13 @@ $(document).ready(function() {
     <p>
           <input type="text" id="loginemail" name="loginemail" placeholder="Your Email"/>
           <input type="password" id="loginpassword" name="loginpassword" placeholder="Your Password"/>
-                 <button data-theme="b" onclick="login()" >Login</button>
+                 <button data-theme="b" onClick="login()" >Login</button>
     </p>
     </div>
     <div id="confirmapage" data-role="collapsible">
             <h3><img src="css/images/chekin.png"/>System Demo</h3>
             <p>
-              <a onclick="gotoDemo()"><img id="hotelLogo" src="css/images/test.png" width="20%" title="http://54.251.118.233/demo/guest"></br>
+              <a onClick="gotoDemo()"><img id="hotelLogo" src="css/images/test.png" width="20%" title="http://54.251.118.233/demo/guest"></br>
               http://54.251.118.233/demo/guest
               </a>
             </p>
@@ -206,7 +206,7 @@ $(document).ready(function() {
 Copyright &copy;2012-2013 Asplan Services Private Limited (19834692/W), Singapore. All Rights Reserved</h4></div>
                  <div id="errorWrapper" style="display:none;">
                   <center id="errorMsg"></center>
-                  <img src="css/images/close_icon.png" width="30px" title="close" onclick="hideError()" id="errorClose"/>
+                  <img src="css/images/close_icon.png" width="30px" title="close" onClick="hideError()" id="errorClose"/>
                 </div>
 </div><!-- /page -->
 </body>
