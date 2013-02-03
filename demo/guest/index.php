@@ -142,7 +142,7 @@ function hideError()
 function showHotel(hotel)
 {
                   $("#logo").html('<center><img src="'+hotel.logo+'" title="'+hotel.name+'" width="150px"></center>');
-                  $("#welcome").html(hotel.name);
+                  $("#welcome").html("Asplan Hotel Demo");
                   $("#aboutUs").append('<h3>'+hotel.name+'</3>');
                   $("#aboutUs").append('<a> Address:'+hotel.address+'</a><br>');
                   $("#aboutUs").append('<a> Zip Code:'+hotel.zip+'</a><br>');
@@ -234,7 +234,7 @@ $(document).ready(function() {
 			    <input type="text" id="checkinemail" name="checkinemail" placeholder="Email"/>
                 <label class="ui-hidden-accessible">Code:</label>
 			    <input type="text" id="checkincode" name="checkincode" placeholder="Confirmation Code"/>
-                 <button data-theme="b" onclick="checkin()" onkeypress="checkin()">Checkin</button>
+                 <button data-theme="b" onClick="checkin()" onKeyPress="checkin()">Checkin</button>
             </p>
 		</div>
 		<div id="loginPage" data-role="collapsible">
@@ -242,8 +242,8 @@ $(document).ready(function() {
 		<p>
 			    <input type="text" id="loginemail" name="loginemail" placeholder="Email"/>
 			    <input type="password" id="loginpassword" name="loginpassword" placeholder="Password"/>
-                 <button data-theme="b" onclick="login()" onkeypress="login()">Login</button>
-                 <a style="float:right;" onclick="gotoStaff()">Staff Login</a>
+                 <button data-theme="b" onClick="login()" onKeyPress="login()">Login</button>
+                 <a style="float:right;" onClick="gotoStaff()">Staff Login</a>
 		</p>
 		</div>
 		<!--<div id="signupPage" data-role="collapsible">
@@ -254,7 +254,7 @@ $(document).ready(function() {
 		</p>
 		</div>-->
     <div id="myPage" data-role="collapsible">
-    <h3 onclick="myCheckin()"><img src="css/images/chekin.png"/>My Checkins</h3>
+    <h3 onClick="myCheckin()"><img src="css/images/chekin.png"/>My Checkins</h3>
     <p>
       <div data-role="collapsible">
       <h3 ><img src="css/images/chekin.png"/>New Confirmations</h3>
@@ -282,7 +282,7 @@ $(document).ready(function() {
         <div id="logoutPage" data-role="collapsible">
                  <h3> <img src="css/images/signup.png"/>Log Out</h3>
                  <p>
-                 <a id="logout" data-rel="dialog" data-theme="a" onclick="logout()" onkeypress="logout()" data-role="button">
+                 <a id="logout" data-rel="dialog" data-theme="a" onClick="logout()" onKeyPress="logout()" data-role="button">
                  Confirm
                  </a>
                  </p>
@@ -293,10 +293,11 @@ $(document).ready(function() {
 		</div>
 	</div>
 	</div><!-- /content -->
-	<div data-role="footer" data-theme="b"><h4>Copyright&copy;Asplan2012</h4></div>
+	<div data-role="footer" data-theme="b"><h4>Enterprise Guest Engagement System.
+Copyright &copy;2012-2013 Asplan Services Private Limited (19834692/W), Singapore. All Rights Reserved</h4></div>
                 <div id="errorWrapper" style="display:none;">
                   <center id="errorMsg"></center>
-                  <img src="css/images/close_icon.png" width="30px" title="close" onclick="hideError()" id="errorClose"/>
+                  <img src="css/images/close_icon.png" width="30px" title="close" onClick="hideError()" id="errorClose"/>
                 </div>
   </div><!-- /page -->
 </body>

@@ -124,7 +124,7 @@ $(document).ready(function() {
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
-		<h1 id="welcome">Enterprise Guest Engagement System</h1>
+		<h1 id="welcome">Enterprise Guest Engagement System - System Administration Module</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">

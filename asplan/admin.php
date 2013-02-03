@@ -243,16 +243,50 @@ function timer()
                 showError("Done!");
             }).fail(function(msg){showError("Fail Getting Emails");});
     }
-    function saveSettings(){
+	
+	function validateTime(time){
+		
+		var t=time;
+		for(i=0;i<t.length();i++){
+		    num=t.charAt(i).charCodeAt(0);
+			if(num<	48 || num>57){
+				
+				
+				return true;
+			    break;
+				
+				
+				}
+				else{return true;}
+			
+			
+			}		
+		
+		
+		}
+		
+       function saveSettings(){
       showError("Saving...");
+	  var time=$("#inactivityTimer").val();
+	  var date=$("#businessDate");
+	  
       var settings=new Object();
+	  if (validateTime(time))
+	  {
       settings.inactivityTimer=$('#inactivityTimer').val();
+	  }	else{showError("Invalidate Time Setting");}
+	  
       settings.mailHost=$('#mailHost').val();
       settings.mailUsername=$('#mailUsername').val();
       settings.mailPassword=$('#mailPassword').val();
       settings.mailPort=$('#mailPort').val();
+	  if(validateTime(time))
+	  {
       settings.maxInstance=$('#maxInstance').val();
+	  }elseelse{showError("Invalidate Setting");}
+	  
       settings.businessDate=$('#businessDate').val();
+	  
       settings.companyName=$('#companyName').val();
        var uid=getCookie("uid");
         var token=getCookie("token");
@@ -265,6 +299,8 @@ function timer()
                 showError("Saved");
                           }).fail(function(msg){showError("Fail Updating");});
     }
+
+
     function setOffline(){
         var uid=getCookie("uid");
         var token=getCookie("token");
@@ -320,32 +356,32 @@ function timer()
 
 	<div data-role="header" data-theme="b" data-add-back-btn="true">
 		<h1>Enterprise Guest Engagement System</h1>
-        <a onclick="gotoHome()" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+        <a onClick="gotoHome()" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 	</div><!-- /header -->
 
 	<div data-role="content">
         <div><h2>Website System Administration Module</h2></div>
 	<div data-role="collapsible-set">
     <div data-role="collapsible">
-      <h3 id="preferencePage" onclick="getPreferences()">System Preferences</h3>
+      <h3 id="preferencePage" onClick="getPreferences()">System Preferences</h3>
       <p>
         <div data-role="collapsible-set">
            <div data-role="collapsible">
              <h3>Session Inactivity Timer(minutes)</h3>
               <p>
                 <input id="inactivityTimer" type="text">
-                <button data-theme="b" onclick="saveSettings()">Change</button>
+                <button data-theme="b" onClick="saveSettings()">Change</button>
              </p>
            </div>
            <div data-role="collapsible">
             <h3>Set Business Date</h3>
            <p>
               <input type="text" id="businessDate">
-              <button data-theme="b" onclick="saveSettings()">Set</button>
+              <button data-theme="b" onClick="saveSettings()">Set</button>
             </p>
           </div>
            <div data-role="collapsible">
-             <h3 onclick="getEmails()">Email Templates</h3>
+             <h3 onClick="getEmails()">Email Templates</h3>
               <p>
                    <div id="emailTemplates" data-role="collapsible-set">
            <div data-role="collapsible" style="color:blue">
@@ -403,7 +439,7 @@ function timer()
            </div>
 
            <div data-role="collapsible">
-             <h3 onclick="">Email Defaults</h3>
+             <h3 onClick="">Email Defaults</h3>
               <p>
                 <ul>
                 <li>Mail Server Host:<input id="mailHost"  type="text" value="ssl://smtp.gmail.com"></li>
@@ -411,12 +447,12 @@ function timer()
                 <li>Mail Server Password:<input id="mailPassword" type="password" value="***"></li>
                 <li>Mail Server Port:<input id="mailPort" type="text" value="465"></li>
                 <li>Email Name Displayed in the Email:<input id="companyName" type="text" value="Asplan Checkin<noreply@asplan.com>"></li>
-                <li><button data-theme="b" onclick="saveSettings()">Save</button></li>
+                <li><button data-theme="b" onClick="saveSettings()">Save</button></li>
               </ul>
              </p>
            </div>
            <div data-role="collapsible">
-             <h3 onclick="">Web Services</h3>
+             <h3 onClick="">Web Services</h3>
               <p>
                Web Service Parameters
                <li>Application Server:Apache2</li>
@@ -425,14 +461,16 @@ function timer()
              </p>
            </div>
            <div data-role="collapsible">
-             <h3 onclick="">Maximum Instances Allowed</h3>
+             <h3 onClick="">Maximum Instances Allowed</h3>
               <p>
+              
                 <input id="maxInstance" type="text" value="100">
-                <button data-theme="b" onclick="saveSettings()">Save</button>
+                <button data-theme="b" onClick="saveSettings()">Save</button>
+               
              </p>
            </div>
             <div data-role="collapsible">
-             <h3 onclick="getBrowsers()">Browser Type Support</h3>
+             <h3 onClick="getBrowsers()">Browser Type Support</h3>
               <p>
                 Any browser which supports HTML5<br>
                 <ul id="supportedBrowsers">
@@ -450,39 +488,39 @@ function timer()
     <div data-role="collapsible">
       <h3>Set System Online/Offline</h3>
       <p>
-           <button data-theme="a" onclick="setOffline()">Confirm</button>
+           <button data-theme="a" onClick="setOffline()">Confirm</button>
       </p>
     </div>
     <div data-role="collapsible">
       <h3>Shutdown all Instances</h3>
       <p>
-           <button data-theme="a" onclick="shutdownAll()">Confirm</button>
+           <button data-theme="a" onClick="shutdownAll()">Confirm</button>
       </p>
     </div>
     <div data-role="collapsible">
       <h3>Start all Instances</h3>
       <p>
-           <button data-theme="b" onclick="startAll()">Confirm</button>
+           <button data-theme="b" onClick="startAll()">Confirm</button>
       </p>
     </div>
     <div data-role="collapsible">
       <h3>Backup all Instances</h3>
       <p>
-           <button data-theme="b" onclick="backupAll">Backup</button>
+           <button data-theme="b" onClick="backupAll">Backup</button>
       </p>
     </div>
     </div>
       </p>
     </div>
 		<div data-role="collapsible">
-            <h3 onclick="getNewHotels()">Enrol New Hospitality Partner</h3>
+            <h3 onClick="getNewHotels()">Enrol New Hospitality Partner</h3>
             <p>
             <ul id="newHotels" data-role="listview" data-filter="true" data-filter-placeholder="Search hotels..." data-filter-theme="d"data-theme="d" data-divider-theme="d">
             </ul>
             </p>
 		</div>
     <div data-role="collapsible"> 
-            <h3 onclick="getAuthorizedHotels()">Enrolled Hospitality Partner Maintenance Facility</h3>
+            <h3 onClick="getAuthorizedHotels()">Enrolled Hospitality Partner Maintenance Facility</h3>
             <p>
             <ul id="authorizedHotels" data-role="listview" data-filter="true" data-filter-placeholder="Search hotels..." data-filter-theme="d"data-theme="d" data-divider-theme="d">
 		      	</ul>
@@ -491,7 +529,7 @@ function timer()
     <div data-role="collapsible">
     <h3>Log Out System Administration</h3>
     <p>
-    <button data-theme="b" onclick="logout()">Confirm</button>
+    <button data-theme="b" onClick="logout()">Confirm</button>
     </p>
     </div>
 
@@ -501,7 +539,7 @@ function timer()
 Copyright &copy;2012-2013 Asplan Services Private Limited (19834692/W), Singapore. All Rights Reserved</h4></div>
  <div id="errorWrapper" style="display:none;">
                   <center id="errorMsg"></center>
-                  <img src="css/images/close_icon.png" width="30px" title="close" onclick="hideError()" id="errorClose"/>
+                  <img src="css/images/close_icon.png" width="30px" title="close" onClick="hideError()" id="errorClose"/>
    </div>
 </div><!-- /page -->
 </body>

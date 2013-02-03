@@ -240,8 +240,8 @@ $(document).ready(function() {
 		<p>
 			    <input type="text" id="loginemail" name="loginemail" placeholder="Email"/>
 			    <input type="password" id="loginpassword" name="loginpassword" placeholder="Password"/>
-                 <button data-theme="b" onclick="login()" onkeypress="login()">Login</button>
-                 <a onclick="gotoGuest()" style="float:right;">Guest Login</a>
+                 <button data-theme="b" onClick="login()" onKeyPress="login()">Login</button>
+                 <a onClick="gotoGuest()" style="float:right;">Guest Login</a>
 		</p>
 		</div>
 		<div data-role="collapsible">
@@ -254,7 +254,7 @@ $(document).ready(function() {
 Copyright &copy;2012-2013 Asplan Services Private Limited (19834692/W), Singapore. All Rights Reserved</h4></div>
     <div id="errorWrapper" style="display:none;">
                   <center id="errorMsg"></center>
-                  <img src="css/images/close_icon.png" width="30px" title="close" onclick="hideError()" id="errorClose"/>
+                  <img src="css/images/close_icon.png" width="30px" title="close" onClick="hideError()" id="errorClose"/>
                 </div>
   </div><!-- /page -->
 </body>
