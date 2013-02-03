@@ -1,5 +1,6 @@
 <html>
 <head>
+test
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>Enterprise Guest Engagement System</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.1.1.css">
