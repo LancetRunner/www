@@ -1,0 +1,96 @@
+<?php 
+
+/**
+ * @file
+ * Install, update and uninstall functions for the ebook module.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function ebook_install(){
+	/**
+	 * Author: Wang Xiaoli
+	 * DISCLAIMER:
+	 * Yes I am altering a core table.
+	 * 
+	 * The file_managed table has no description field.  As a result, we would have to either:
+	   * 1). This is hoping to be a core addition, so think of it as a core patch
+	   * that will eventually go in.
+	   *
+	   * 2). It is adding a new field, so it shouldn't cause any conflicts.  If it
+	   * does that INSERT / SELECT code is badly written and should use complete
+	   * INSERTS or column names.
+	   */
+	
+	// Alter {file_managed}.type.
+	db_add_field('file_managed', 'type', _ebook_file_type_field_specific());
+	db_add_index('file_managed', 'type', array('type'));
+	// Alter {file_managed}.public.
+	db_add_field('file_managed', 'public', _ebook_file_public_field_specific());
+	db_add_index('file_managed', 'public', array('public'));
+	// Alter {file_managed}.description.
+	db_add_field('file_managed', 'description', _ebook_file_description_field_specific());
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function ebook_uninstall(){
+	db_query("DELETE FROM {variable} WHERE name LIKE 'ebook_%'");
+	cache_clear_all('variables', 'cache_bootstrap');
+	db_drop_field('file_managed', 'type');
+	db_drop_field('file_managed', 'public');
+	db_drop_field('file_managed', 'description');
+}
+
+/**
+ * Implement hook_schema_alter().
+ */
+function ebook_schema_alter(&$schema){
+	// Alter {file_managed}.type.
+	$schema['file_managed']['fields']['type'] = _ebook_file_type_field_specific();
+	// Alter {file_managed}.public.
+	$schema['file_managed']['fields']['public'] = _ebook_file_public_field_specific();
+	// Alter {file_managed}.description.
+	$schema['file_managed']['fields']['description'] = _ebook_file_description_field_specific();
+}
+
+/**
+ *  Define the database {file_managed}.type field.
+ */
+function _ebook_file_type_field_specific() {
+	return array(
+	    'description' => t('The type of a file for use in the ebook stystem'),
+		'type' => 'int', 
+		'not null' => TRUE, 
+		'default' => 0, 
+		'size' => 'tiny',
+	); 
+}
+
+/**
+ *  Define the database {file_managed}.public field.
+ */
+function _ebook_file_public_field_specific() {
+	return array(
+	    'description' => t('Access status of a file for use in the ebook stystem'),
+		'type' => 'int', 
+		'not null' => TRUE, 
+		'default' => 0, 
+		'size' => 'tiny',
+	); 
+}
+
+/**
+ *  Define the database {file_managed}.description field.
+ */
+function _ebook_file_description_field_specific() {
+	return array(
+	    'description' => t('Description of a file for use in the ebook stystem'),
+		'type' => 'text', 
+		'size' => 'normal', 
+		'not null' => FALSE, 
+		'default' => NULL,
+	); 
+}

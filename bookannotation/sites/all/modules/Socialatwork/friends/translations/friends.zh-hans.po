@@ -1,0 +1,226 @@
+# $Id$
+#
+# Chinese, Simplified translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  friends.forms.inc: n/a
+#  friends.module: n/a
+#  friends.info: n/a
+#  friends.pages.inc: n/a
+#  friends.install: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-10-23 11:17+0800\n"
+"PO-Revision-Date: 2012-10-23 11:17+0800\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese, Simplified <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: friends.forms.inc:26
+msgid "Group Name"
+msgstr "组名"
+
+#: friends.forms.inc:30
+msgid "Example:co-workers, classmates"
+msgstr "例如：同事，同学"
+
+#: friends.forms.inc:52
+msgid "Choose friends"
+msgstr "选择好友"
+
+#: friends.forms.inc:63
+msgid "Edit"
+msgstr "编辑"
+
+#: friends.forms.inc:63;121
+msgid "Create"
+msgstr "创建"
+
+#: friends.forms.inc:73
+msgid "A group with name !name already exists."
+msgstr "已经存在名字为!name的小组。"
+
+#: friends.forms.inc:120
+msgid "Group %name has been %op."
+msgstr "已经%op小组%name。"
+
+#: friends.forms.inc:141
+msgid "Delete group"
+msgstr "删除小组"
+
+#: friends.forms.inc:143
+msgid "Are you sure to delete group !name?"
+msgstr "你确定要删除!name组？"
+
+#: friends.forms.inc:144
+msgid "Delete"
+msgstr "删除"
+
+#: friends.forms.inc:145;203;263
+msgid "Cancel"
+msgstr "取消"
+
+#: friends.forms.inc:157
+msgid "Pending Requests"
+msgstr "未处理的请求"
+
+#: friends.forms.inc:175;259
+msgid "Approve"
+msgstr "通过"
+
+#: friends.forms.inc:179;262 friends.module:403
+msgid "Decline"
+msgstr "拒绝"
+
+#: friends.forms.inc:226 friends.info:0
+msgid "User"
+msgstr "用户"
+
+#: friends.forms.inc:226
+msgid "Operations"
+msgstr "操作"
+
+#: friends.forms.inc:231
+msgid "You have no pending requests."
+msgstr "你没有未处理的请求。"
+
+#: friends.pages.inc:92
+msgid "Are you sure to accept the friend request from !name?"
+msgstr "您确定要接受!name的好友请求？"
+
+#: friends.pages.inc:111
+msgid "Do you want to decline the friend request from !name?"
+msgstr "您确定要拒绝!name的好友请求？"
+
+#: friends.pages.inc:132
+msgid "Request sent, waiting for approval."
+msgstr "请求已经发送，等待确认中。"
+
+#: friends.module:30;288;288;290;20
+msgid "My Friends"
+msgstr "我的好友"
+
+#: friends.module:105
+msgid "Administer User Relationships"
+msgstr "管理"
+
+#: friends.module:106
+msgid "Allows to administer user relationships and view relationships of all users."
+msgstr "允许用户管理和查看其他用户的好友。"
+
+#: friends.module:109
+msgid "Maintain own relationships"
+msgstr "管理自己的好友"
+
+#: friends.module:110
+msgid "Allows to maintain own relationships including approving, removing and creating."
+msgstr "允许管理自己的好友，包括批准，删除和创建小组。"
+
+#: friends.module:113
+msgid "View own user relationships"
+msgstr "查看自己的好友"
+
+#: friends.module:114
+msgid "Allows to view own relationships."
+msgstr "允许查看自己的好友"
+
+#: friends.module:172
+msgid "Email"
+msgstr "电子邮件"
+
+#: friends.module:173
+msgid "Do't send me any notification."
+msgstr "不发送通知"
+
+#: friends.module:176
+msgid "Private Message"
+msgstr "站内信"
+
+#: friends.module:184
+msgid "Notification method of new friend request"
+msgstr "好友申请通知方法"
+
+#: friends.module:218
+msgid "Add as !name"
+msgstr "添加!name"
+
+#: friends.module:311
+msgid "@action requests"
+msgstr "@action请求"
+
+#: friends.module:400
+msgid "New friend request from @name"
+msgstr "来自@name的好友请求"
+
+#: friends.module:402
+msgid "Accept"
+msgstr "接受"
+
+#: friends.module:405;428
+msgid "Hi !username,"
+msgstr "你好!username"
+
+#: friends.module:407
+msgid "!name has sent you a friend request."
+msgstr "!name请求成为你的好友。"
+
+#: friends.module:408
+msgid "You can !accept or !decline"
+msgstr "你可以!accept或者!decline"
+
+#: friends.module:410
+msgid "View all pending friend requests !link."
+msgstr "查看所有未处理的好友请求!link。"
+
+#: friends.module:410
+msgid "here"
+msgstr "这里"
+
+#: friends.module:426
+msgid "@name has approved your friend request."
+msgstr "@name通过了你的好友请求。"
+
+#: friends.module:430
+msgid "!name has accepted your friend request."
+msgstr "!name接受了你的好友请求。"
+
+#: friends.module:309
+msgid "@action request (1)"
+msgid_plural "@action requests (@count)"
+msgstr[0] "@action请求(1)"
+msgstr[1] "@action请求(@count)"
+
+#: friends.module:5
+msgid "Request"
+msgstr "请求"
+
+#: friends.module:35
+msgid "Add Group"
+msgstr "添加小组"
+
+#: friends.module:45
+msgid "Edit Group"
+msgstr "编辑小组"
+
+#: friends.module:55
+msgid "Delete Group"
+msgstr "删除小组"
+
+#: friends.install:29
+msgid "Friend"
+msgstr "好友"
+
+#: friends.install:30 friends.info:0
+msgid "Friends"
+msgstr "好友"
+
+#: friends.info:0
+msgid "Create a global relationship type \"friend\" and allows users to manage friends in groups."
+msgstr "创建\"好友\"的用户关系类型，允许用户添加好友，以及分组管理好友。"
+

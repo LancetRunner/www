@@ -1,0 +1,10 @@
+name = Friends
+description = Create a global relationship type "friend" and allows users to manage friends in groups.
+
+core = 7.x
+version = 7.15-20121022
+
+package = User
+project = social@work
+
+dependencies[] = user_relationships

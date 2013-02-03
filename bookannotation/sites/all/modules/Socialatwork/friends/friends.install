@@ -1,0 +1,100 @@
+<?php
+function friends_schema_alter(&$schema) {
+	// add field to existing schema.
+	$schema['user_relationship_types']['fields']['owner_uid'] = array(
+    	'type' => 'int', 
+    	'not null' => TRUE, 
+    	'default' => 0, 
+    	'description' => 'uid of the owner of this type of relationship',
+	);
+
+	$schema['user_relationship_types']['unique keys']['name'] = array(
+		'name', 'owner_uid'
+		);
+}
+
+function friends_install(){
+	// alter user_relationship_types table, add owner_uid
+	if( !db_field_exists('user_relationship_types', 'owner_uid') ) {
+		db_add_field('user_relationship_types', 'owner_uid', array(
+		    'type' => 'int', 
+		    'not null' => true, 
+		    'default' => -1, 
+		    'description' => 'uid of the owner of this type of relationship',
+		));
+
+		db_drop_unique_key('user_relationship_types', 'name');
+		db_add_unique_key('user_relationship_types', 'name', array('name', 'owner_uid'));
+	}
+	$name= t('Friend');
+	$plural_name = t('Friends');
+
+	// Insert a sepcial type 'Friends' which is the default type when a relationship is established
+	$rtids = db_select('user_relationship_types', 't')
+	->fields('t', array('rtid'))
+	->condition('t.name', $name)
+	->execute()
+	->fetchCol();
+	if( $rtids ){
+		$rtid = $rtids[0];
+		db_update('user_relationship_types')
+		->fields(array(
+			'owner_uid' => 0
+		))
+		->condition('rtid', $rtid)->execute();
+	} else {
+		$rtid = db_insert('user_relationship_types')
+		->fields( array(
+				'name' => $name, 
+				'plural_name' => $plural_name, 
+				'owner_uid' => 0, 
+				'requires_approval' => 1
+		))->execute();
+	}
+
+	variable_set('friends_default_group_id', $rtid);
+	variable_set('friends_default_group_name', $plural_name);
+}
+
+function friends_enable(){
+	variable_set('user_relationships_requests_link', 'friends/requests');
+	$perms = array('can have relationships', 'maintain own relationships', 'view user relationships');
+	user_role_grant_permissions(2, $perms);
+
+	if(module_exists('mailsystem')){
+		mailsystem_set(array(
+	  		'friends' => 'MimeMailSystem', // Just messages with $key sent by $module.
+		));
+	}
+}
+
+function friends_disable(){
+	if(module_exists('mailsystem')){
+		mailsystem_clear(array(
+	  		'friends' => 'MimeMailSystem', // Just messages with $key sent by $module.
+		));
+	}
+}
+
+function friends_uninstall(){
+	if(db_field_exists('user_relationship_types', 'owner_uid')){
+		// Delete all relationships created by user, i.e. with owner_uid > 0
+		$result = db_query('delete from user_relationships where rtid in (
+			select rtid from user_relationship_types where owner_uid >= 0)');
+
+		db_delete('user_relationship_types')
+		->condition('owner_uid', '0', '>=')
+		->execute();
+
+		// restore user_relationship_types table
+		db_drop_field('user_relationship_types', 'owner_uid');
+		db_drop_unique_key('user_relationship_types', 'name');
+		db_add_unique_key('user_relationship_types', 'name', array('name'));
+	}
+	
+	db_delete('variable')
+	->condition('name', db_like("friends_") . '%', 'LIKE')
+	->execute();	
+}
+
+

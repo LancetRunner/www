@@ -1,0 +1,14 @@
+name = Book Annotation
+description = Create a content type of annotation
+
+core = 7.x
+version = 7.18-20120711
+
+package = eBook Annotation
+project = eBook Annotation
+author = Yang Zhixing; Wang Xiaoli
+
+dependencies[] = image
+dependencies[] = ebook
+
+configure = admin/config/content/annotation
