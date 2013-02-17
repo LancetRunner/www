@@ -1,7 +1,7 @@
 <?php
 require_once("includes/connection.php");//Connect to the Database
 require_once("settings.php");//Input Settings
-getPreferences();//Initialize Settings
+//getPreferences();//Initialize Settings
 require_once("record.php");
 require_once("email.php");
 switch ($_SERVER['REQUEST_METHOD']) 

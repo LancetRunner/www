@@ -144,8 +144,8 @@ $(document).ready(function() {
     <div id="confirmapage" data-role="collapsible">
             <h3><img src="css/images/chekin.png"/>System Demo</h3>
             <p>
-              <a onClick="gotoDemo()"><img id="hotelLogo" src="css/images/test.png" width="20%" title="http://54.251.118.233/demo/guest"></br>
-              http://54.251.118.233/demo/guest
+              <a onClick="gotoDemo()"><img id="hotelLogo" src="css/images/test.png" width="20%" title="http://54.251.118.233/pl/demo/guest"></br>
+              http://54.251.118.233/pl/demo/guest
               </a>
             </p>
     </div>

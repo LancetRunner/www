@@ -157,11 +157,13 @@ function timer()
                }).success(function( msg ) {
                 var settings=msg;
                 $('#inactivityTimer').val(settings.inactivityTimer);
+				$('#legend1').append(settings.inactivityTimer);
                 $('#mailHost').val(settings.mailHost);
                 $('#mailUsername').val(settings.mailUsername);
                 $('#mailPassword').val(settings.mailPassword);
                 $('#mailPort').val(settings.mailPort);
                 $('#maxInstance').val(settings.maxInstance);
+				$('#legend2').append(settings.maxInstance);
                 $('#businessDate').val(settings.businessDate);
                 $('#companyName').val(settings.companyName);
                           }).fail(function(msg){showError("Fail Getting Preferences");});
@@ -243,50 +245,16 @@ function timer()
                 showError("Done!");
             }).fail(function(msg){showError("Fail Getting Emails");});
     }
-	
-	function validateTime(time){
-		
-		var t=time;
-		for(i=0;i<t.length();i++){
-		    num=t.charAt(i).charCodeAt(0);
-			if(num<	48 || num>57){
-				
-				
-				return true;
-			    break;
-				
-				
-				}
-				else{return false;}
-			
-			
-			}		
-		
-		
-		}
-		
-       function saveSettings(){
+    function saveSettings(){
       showError("Saving...");
-	  var time=$("#inactivityTimer").val();
-	  var date=$("#businessDate");
-	  
       var settings=new Object();
-	  if (validateTime(time))
-	  {
       settings.inactivityTimer=$('#inactivityTimer').val();
-	  }	else{showError("Invalidate Time Setting");}
-	  
       settings.mailHost=$('#mailHost').val();
       settings.mailUsername=$('#mailUsername').val();
       settings.mailPassword=$('#mailPassword').val();
       settings.mailPort=$('#mailPort').val();
-	  if(validateTime(time))
-	  {
       settings.maxInstance=$('#maxInstance').val();
-	  }elseelse{showError("Invalidate Setting");}
-	  
       settings.businessDate=$('#businessDate').val();
-	  
       settings.companyName=$('#companyName').val();
        var uid=getCookie("uid");
         var token=getCookie("token");
@@ -299,8 +267,6 @@ function timer()
                 showError("Saved");
                           }).fail(function(msg){showError("Fail Updating");});
     }
-
-
     function setOffline(){
         var uid=getCookie("uid");
         var token=getCookie("token");
@@ -369,7 +335,15 @@ function timer()
            <div data-role="collapsible">
              <h3>Session Inactivity Timer(minutes)</h3>
               <p>
-                <input id="inactivityTimer" type="text">
+                <form>
+                <label ></label>
+                <legend id="legend1">Click to select your preferred timer and Current Timer is:</legend>
+                <select id="inactivityTimer">
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                </select>
+                </form>
                 <button data-theme="b" onClick="saveSettings()">Change</button>
              </p>
            </div>
@@ -463,10 +437,17 @@ function timer()
            <div data-role="collapsible">
              <h3 onClick="">Maximum Instances Allowed</h3>
               <p>
-              
-                <input id="maxInstance" type="text" value="100">
-                <button data-theme="b" onClick="saveSettings()">Save</button>
                
+                 <form>
+                <label ></label>
+                <legend id="legend2">Click to select instances allowed and Current Number is:</legend>
+                <select id="maxInstance">
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                </select>
+                </form>
+                <button data-theme="b" onClick="saveSettings()">Save</button>
              </p>
            </div>
             <div data-role="collapsible">

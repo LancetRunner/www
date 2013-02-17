@@ -51,6 +51,7 @@ function getHotel()
                  hotel.logo=hotelxml.getElementsByTagName("logo")[0].childNodes[0].nodeValue;
                  hotel.zip=hotelxml.getElementsByTagName("zip")[0].childNodes[0].nodeValue;
                  hotel.contact=hotelxml.getElementsByTagName("contact")[0].childNodes[0].nodeValue;
+				
                  return hotel;
 }
 function showError(msg)
@@ -142,10 +143,11 @@ function hideError()
 function showHotel(hotel)
 {
                   $("#logo").html('<center><img src="'+hotel.logo+'" title="'+hotel.name+'" width="150px"></center>');
-                  $("#welcome").html("Asplan Hotel Demo");
+                  $("#welcome").append(hotel.name);
                   $("#aboutUs").append('<h3>'+hotel.name+'</3>');
                   $("#aboutUs").append('<a> Address:'+hotel.address+'</a><br>');
                   $("#aboutUs").append('<a> Zip Code:'+hotel.zip+'</a><br>');
+				
                   $("#aboutUs").append('<a> Contact No:'+hotel.contact+'</a><br>');
 }
 function checkUser()
@@ -186,7 +188,7 @@ function checkUser()
                                                           $("#myConfirmation").append('<li><a onclick="showCheckin('+checkin[i].rid+')" >'+checkin[i].arrivalday1+'/'+checkin[i].arrivalmonth1+'/'+checkin[i].arrivalyear1+'</a></li>');
                                                           break;
                                                           case "1":
-                                                          $("#currentCheckin").append('<li><a onclick="showCheckin('+checkin[i].rid+')" >'+checkin[i].arrivalday1+'/'+checkin[i].arrivalmonth1+'/'+checkin[i].arrivalyear1+'</a></li>');
+                                                          $("#currentCheckin").append('<li><a onclick="showCheckin('+checkin[i].rid+')" >'+"Check-in Date:"+checkin[i].arrivalday1+'/'+checkin[i].arrivalmonth1+'/'+checkin[i].arrivalyear1+'&nbsp;'+'&nbsp;'+'&nbsp;'+"Confirmation Code:"+checkin[i].confirmation+'</a></li>');
                                                           break;
                                                           case "2":
                                                           $("#myHistory").append('<li><a onclick="showCheckin('+checkin[i].confirmation+')">'+checkin[i].checkindate+'</a></li>');
@@ -218,7 +220,9 @@ $(document).ready(function() {
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
-		<h1 id="welcome">Welcome</h1>
+		<h1 >Enterprise Guest Engagement System - </h1>
+		<h1>Customer Instance Guest Interface Module - </h1>
+		<h1 id="welcome"></h1>
 		<a data-rel="back" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 	</div><!-- /header -->
 
@@ -234,7 +238,7 @@ $(document).ready(function() {
 			    <input type="text" id="checkinemail" name="checkinemail" placeholder="Email"/>
                 <label class="ui-hidden-accessible">Code:</label>
 			    <input type="text" id="checkincode" name="checkincode" placeholder="Confirmation Code"/>
-                 <button data-theme="b" onClick="checkin()" onKeyPress="checkin()">Checkin</button>
+                 <button data-theme="b" onClick="checkin()" onKeyPress="checkin()">Check-in</button>
             </p>
 		</div>
 		<div id="loginPage" data-role="collapsible">
@@ -254,7 +258,7 @@ $(document).ready(function() {
 		</p>
 		</div>-->
     <div id="myPage" data-role="collapsible">
-    <h3 onClick="myCheckin()"><img src="css/images/chekin.png"/>My Checkins</h3>
+    <h3 onClick="myCheckin()"><img src="css/images/chekin.png"/>My Check-in's</h3>
     <p>
       <div data-role="collapsible">
       <h3 ><img src="css/images/chekin.png"/>New Confirmations</h3>
@@ -264,7 +268,7 @@ $(document).ready(function() {
       </p>
       </div>
       <div data-role="collapsible">
-      <h3 ><img src="css/images/chekin.png"/>Current Checkin</h3>
+      <h3 ><img src="css/images/chekin.png"/>Current Check-in</h3>
       <p>
                  <ul id="currentCheckin" data-role="listview">
                  </ul>

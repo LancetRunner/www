@@ -89,7 +89,12 @@ float:right;
                           $('#emailMessage').val($('#message').html());
                           if(hotel.verified>0){
                             $('#verify').hide();
+							$('#hoteltitle').html("Enrolled Hospitality Partner Maintenance facility - ");
+							$('#hoteltitle').append(hotel.hname);
+							$('#sendEmail').hide();
                           }else{
+							$('#hoteltitle').html("Enrol New Hospitality Partner - ")
+							$('#hoteltitle').append(hotel.hname);
                             $('#verified').hide();
                             $('#buildPage').hide();
                           }
@@ -150,16 +155,17 @@ float:right;
         var token=getCookie("token");
         var hid=getCookie("hid");
         var email=new Object();
-        email.from=$('#emailFrom').val();
-        email.to=$('#emailTo').val();
-        email.subject=$('#emailSubject').val();
-        email.message=$('#emailMessage').val();
-        console.log(email);
+       var from=$('#emailFrom').val();
+        var to=$('#emailTo').val();
+        var subject=$('#emailSubject').val();
+        var message=$('#emailMessage').val();        
+console.log(email);
+alert(from);
         $.ajax({
                type: "POST",
                url: "api/admin.php",
                dataType: "json",
-               data: { uid:uid, token: token,hid:hid,email:email,action:'verifyHotel'}
+               data: { uid:uid, token: token,hid:hid,from:from,to:to,subject:subject,message:message,action:'verifyHotel'}
                }).success(function( msg ) {
                 $('#verified').show();
                 $('#buildPage').show();
@@ -216,8 +222,8 @@ float:right;
 <div data-role="page">
 
 	<div data-role="header" data-theme="b" data-add-back-btn="true">
-		<h1>Hotel Information</h1>
-        <a onclick="gotoAdmin()" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+		<h1 id="hoteltitle"></h1>
+        <a onClick="gotoAdmin()" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 	</div><!-- /header -->
 
 	<div data-role="content">
@@ -295,10 +301,10 @@ float:right;
                    <td>
                   </td>
                   <td>
-                    <button onclick="saveHotel()">Save</button>
+                    <button onClick="saveHotel()">Save</button>
                   </td>
                  <td>
-                    <button data-theme="a" onclick="deleteHotel()">Delete</button>
+                    <button data-theme="a" onClick="deleteHotel()">Delete</button>
                   </td>
                 </tr>
               </table>
@@ -328,8 +334,8 @@ float:right;
                 <p>Best Regards,</p>
                 <p>Asplan Service Team</p></div>
                 <textarea cols="100" rows="100" id="emailMessage" placeholder="Please Paste The HTML Email"></textarea>        
-                     <div id="verified"><button onclick="unverifyHotel()" data-theme="b">Verified</button></div>
-                     <div id="verify"><button onclick="verifyHotel()" data-theme="a">Verify</button></div>
+                     <div id="verified"><button onClick="unverifyHotel()" data-theme="b">Verified</button></div>
+                     <div id="verify"><button onClick="verifyHotel()" data-theme="a">Verify</button></div>
             </p>
     </div>
     <div id="buildPage" data-role="collapsible"> 
@@ -369,7 +375,7 @@ float:right;
                 <div data-role="collapsible">
                   <h3 id="step6">Step 6,Copy Hotel Meta Data</h3>
                   <p>
-                    <button data-theme="b" onclick="buildApp()">Finish Building</button>
+                    <button data-theme="b" onClick="buildApp()">Finish Building</button>
                   </p>
                 </div>
               </div>
@@ -378,16 +384,17 @@ float:right;
     <div data-role="collapsible">
     <h3>Log Out</h3>
     <p>
-    <button data-theme="b" onclick="logout()">Confirm</button>
+    <button data-theme="b" onClick="logout()">Confirm</button>
     </p>
     </div>
 
 	</div>
 	</div><!-- /content -->
-	<div data-role="footer" data-theme="b"><h4>Copyright&copy;Asplan2012</h4></div>
+	<div data-role="footer" data-theme="b"><h4>Enterprise Guest Engagement System.
+Copyright &copy;2012-2013 Asplan Services Private Limited (19834692/W), Singapore. All Rights Reserved</h4></div>
    <div id="errorWrapper" style="display:none;">
                   <center id="errorMsg"></center>
-                  <img src="css/images/close_icon.png" width="30px" title="close" onclick="hideError()" id="errorClose"/>
+                  <img src="css/images/close_icon.png" width="30px" title="close" onClick="hideError()" id="errorClose"/>
    </div>
 </div><!-- /page -->
 </body>

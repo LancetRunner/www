@@ -59,15 +59,17 @@ if(isset($_POST["uid"])&&isset($_POST["token"]))
 			break;
 			case 'verifyHotel':
 			$hid=$_POST["hid"];
-			$email=$_POST["email"];
+			
 			if(verifyHotel($hid))
 			{
-				$from=$email["from"].'<noreply@asplan.com>';
-				$to=$email["to"];
-				$subject=$email["subject"];
-				$message=$email["message"];
-				if(sendHTMLEmail($from,$to,$subject,$message)) echo json_encode("success");
+	 $from = $_POST["from"];                              // Your name and email address
+        $to = $_POST["to"];                           // The Recipients name and email address
+        $subject = $_POST["subject"];    				
+          $html1 = $_POST["message"];
+
+				if(sendHTMLEmail($from,$to,$subject,$html1 )) echo json_encode("success");
 				else echo "Error Sending Email";
+				
 			}else echo "Error Verifying";
 			break;
 			case 'unverifyHotel':
@@ -79,7 +81,7 @@ if(isset($_POST["uid"])&&isset($_POST["token"]))
 				$to=$email["to"];
 				$subject=$email["subject"];
 				$message=$email["message"];
-				if(sendHTMLEmail($from,$to,$subject,$message)) echo json_encode("success");
+				if(sendHTMLEmail($from,$to,$subject)) echo json_encode("success");
 				else echo "Error Sending Email";
 			}else echo "Error Unverifying";
 			break;

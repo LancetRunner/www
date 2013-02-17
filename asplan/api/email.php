@@ -1,12 +1,19 @@
 <?php
-/*function sendhotelEmail($email,$hotelname,$hoteladdr,$hotelmanager,$hotelphone,$hotelzip){
+require_once("includes/connection.php");//Connect to the Database
+require_once("settings.php");//Input Settings
+require_once("user.php");//Include User Functions
+require_once("hotel.php");
+require_once('email.php');
+getPreferences();//Initialize Settings
+
+function sendhotelEmail($email,$hotelname,$hoteladdr,$hotelmanager,$hotelphone,$hotelzip){
 	$message="Dear ".$hotelmanager.",\n\nThank you for your interests in the mobile checkin system developed by Asplan Service.\n\n".
 	"Below is your hotel information:\n\n"."Hotel Name:".$hotelname."\nHotel Address:".$hoteladdr."\nZip Code:".$hotelzip."\nYour Phone Number:".$hotelphone."\n\n".
 	"Please confirm the above information is correct by replying this email and attach your company logo.\n\nBest Regards,\nAsplan Service Team";
 	$to=$email;
 	$subject="Thank you for contacting Asplan";
 	return sendEmail($to,$subject,$message);
-}*/
+}
 
 function sendVerificationEmail($email,$hotelname,$hotelmanager,$hotelURL){
 	$message="Dear ".$hotelmanager.",\n\nYour request has been approved by Asplan Service.\n".
@@ -16,10 +23,9 @@ function sendVerificationEmail($email,$hotelname,$hotelmanager,$hotelURL){
 	$subject="Verfied By Asplan";
 	return sendEmail($to,$subject,$message);
 }
-function sendEmail($to,$subject,$message){
+function sendEmail($from,$to,$subject,$message){
 	ini_set('include_path', PEAR_PATH);
 	require_once "Mail.php";
-	$from = COMPANY_NAME;
 	$headers = array ('From' => $from,
                   'To' => $to,
                   'Subject' => $subject);
@@ -31,30 +37,42 @@ function sendEmail($to,$subject,$message){
                              'password' => GMAIL_PASSWORD));
 	$mail = $smtp->send($to, $headers, $message);
 	if (PEAR::isError($mail)) {
-    return false;
+  		 false;
 	} else {
-    return true;
+   		return true;
 	}
 }
-function sendHTMLEmail($from,$to,$subject,$message){
+function sendHTMLEmail($from,$to,$subject,$html1){
 	ini_set('include_path', PEAR_PATH);
 	require_once "Mail.php";
-	require_once "Mail/mime.php";  
-	 $mime = new Mail_mime();
-     $mime->setHTMLBody($message);
-     $message = $mime->get();
-	$headers = array ('From' => $from,
+	require_once "Mail/mime.php";
+
+ 
+  $text = 'This is a text message.';  
+	 
+
+  $crlf = "\n";
+ $message = new Mail_mime($crlf);
+$message->setHTMLBody($html1);
+
+ 
+     
+ $body=$message->get();
+ 	$headers = array ('From' => $from,
                   'To' => $to,
                   'Subject' => $subject,
-                  'Content-Type'=>'text/html;charset=UTF-8',
-                  'Content-Transfer-Encoding'=>'8bit');
+                     'MIME-Version'=> '1.0',
+                  'Content-Type'=>'text/html;charset=ISO-8859-1',                  );
+ $hdrs=$message->headers($headers);
 	$smtp = Mail::factory('smtp',
                       array ('host' => GMAIL_HOST,
                              'port' => GMAIL_PORT,
                              'auth' => true,
                              'username' => GMAIL_UNAME,
                              'password' => GMAIL_PASSWORD));
-	$mail = $smtp->send($to, $headers, $message);
+       
+	$mail = $smtp->send($to, $hdrs, $body);
+
 
 	if (PEAR::isError($mail)) {
     return $mail->getMessage();

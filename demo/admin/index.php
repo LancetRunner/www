@@ -171,7 +171,9 @@ function logout(){
 function showHotel(hotel)
 {
   $("#logo").html('<center><img src="'+hotel.logo+'" title="'+hotel.name+'" width="150px"></center>');
-                  $("#welcome").html("Admin Panel");
+                  $("#welcome").html("Enterprise Guest Engagement System - Customer Instance System Administration Modulel"+'<br />');
+		    $("#welcome").append(hotel.name);
+
                   $("#aboutUs").append('<h3>'+hotel.name+'</3>');
                   $("#aboutUs").append('<a> Address:'+hotel.address+'</a><br>');
                   $("#aboutUs").append('<a> Zip Code:'+hotel.zip+'</a><br>');
