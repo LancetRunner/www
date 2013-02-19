@@ -7,50 +7,6 @@
 <script src="js/cookie.js"></script>
 <link rel="stylesheet" href="css/datepicker.css" /> 
 <script src="js/jQuery.ui.datepicker.js"></script>
-<style type="text/css">
-.ss select{margin-right:30px;
-
-
-	
-	
-	
-	}
-.ui-collapsible.ui-collapsible-collapsed .ui-collapsible-heading .ui-icon-plus,
-.ui-icon-arrow-r { background-position: -108px 0; }
-.ui-icon-arrow-l { background-position: -144px 0; }
-.ui-icon-arrow-u { background-position: -180px 0; }
-.ui-collapsible .ui-collapsible-heading .ui-icon-minus,
-.ui-icon-arrow-d { background-position: -216px 0; }
-#errorWrapper{
-  border: 1px solid  #456f9a /*{b-bar-border}*/;
-  background:       #5e87b0 /*{b-bar-background-color}*/;
-  color:          #fff /*{b-bar-color}*/;
-  font-weight: bold;
-  text-shadow: 0 /*{b-bar-shadow-x}*/ 1px /*{b-bar-shadow-y}*/ 1px /*{b-bar-shadow-radius}*/ #3e6790 /*{b-bar-shadow-color}*/;
-  background-image: -webkit-gradient(linear, left top, left bottom, from( #6facd5 /*{b-bar-background-start}*/), to( #497bae /*{b-bar-background-end}*/)); /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient( #6facd5 /*{b-bar-background-start}*/, #497bae /*{b-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
-  background-image:    -moz-linear-gradient( #6facd5 /*{b-bar-background-start}*/, #497bae /*{b-bar-background-end}*/); /* FF3.6 */
-  background-image:     -ms-linear-gradient( #6facd5 /*{b-bar-background-start}*/, #497bae /*{b-bar-background-end}*/); /* IE10 */
-  background-image:      -o-linear-gradient( #6facd5 /*{b-bar-background-start}*/, #497bae /*{b-bar-background-end}*/); /* Opera 11.10+ */
-  background-image:         linear-gradient( #6facd5 /*{b-bar-background-start}*/, #497bae /*{b-bar-background-end}*/);
-position:absolute;
-z-index: 100;
-width:33%;
-left:33%;
-top:30%;
-}
-.ui-input-textarea{
-  height:500px;
-  width:100%;
-}
-#message{
-   border:1px solid black;
-}
-#errorClose{
-float:right;
-}
-</style>
-
 <script>
   function gotoHome(){
     window.location='index.php';
@@ -97,19 +53,19 @@ float:right;
 										
 										function changePreference()
 										{
-											var eMotel=$("input[name='checkbox1[]']:checked:enabled").val();
-									     //var eMotel=$("#checkbox1").val();
-                                        var eBinn=$("input[name='checkbox2[]']:checked:enabled").val();
-                                        var eBhotel=$("input[name='checkbox3[]']:checked:enabled").val();
-                                        var eSchain=$("input[name='checkbox4[]']:checked:enabled").val();
-                                        var mBinn=$("input[name='checkbox5[]']:checked:enabled").val();
-                                        var mIbhotel=$("input[name='checkbox6[]']:checked:enabled").val();
-                                        var mSchain=$("input[name='checkbox7[]']:checked:enabled").val();
-										var mBchain=$("input[name='checkbox8[]']:checked:enabled").val();
-										var uIbhotel=$("input[name='checkbox9[]']:checked:enabled").val();
-								        var uSchain=$("input[name='checkbox10[]']:checked:enabled").val();
-								        var uBchain=$("input[name='checkbox11[]']:checked:enabled").val();
-								        var uChotel=$("input[name='checkbox12[]']:checked:enabled").val();	
+											
+									     var eMotel=$("#checkbox1").val();
+                                        var eBinn=$("#checkbox2").val();
+                                        var eBhotel=$("#checkbox3").val();
+                                        var eSchain=$("#checkbox4").val();
+                                        var mBinn=$("#checkbox5").val();
+                                        var mIbhotel=$("#checkbox6").val();
+                                        var mSchain=$("#checkbox7").val();
+										var mBchain=$("#checkbox8").val();
+										var uIbhotel=$("#checkbox9").val();
+								        var uSchain=$("#checkbox10").val();
+								        var uBchain=$("#checkbox11").val();
+								        var uChotel=$("#checkbox12").val();	
 										
 										var select1=$("#select1").val();
                                        
@@ -189,120 +145,42 @@ float:right;
                }).success(function( msg ) {
 				 
                           var hotels=msg;
-                          var hotel1=$("#economyHotel");
-						  var hotel2=$("#midrangeHotel");
-						  var hotel3=$("#upscaleHotel");
-						  var list1=$("#list1");
-						  var list2=$("#list2");
-						  var list3=$("#list3");
-						  var list4=$("#list4");
-						  var list5=$("#list5");
-						  var list6=$("#list6");
-						   var list7=$("#list7");
-						  var list8=$("#list8");
-						  var list9=$("#list9");
-						  var list10=$("#list10");
-						  var list11=$("#list11");
-						
-                           hotel1.html('');
-						   hotel2.html('');
-						   hotel3.html('');
-						   list1.html('');
-						   list2.html('');
-						   list3.html('');
-						   list4.html('');
-						   list5.html('');
-						   list6.html('');
-						    list7.html('');
-							 list8.html('');
-							  list9.html('');
-							   list10.html('');
-							    list11.html('');
+                          var hotel=$("#userPreference");
+                          hotel.html('');
                             if(hotels)
                           {
                           for(var i=0;i<hotels.length;i++)
                           { 
 						  
-							  for(var j=1;j<24;j++){
-							  switch(j){
-								  case 1 :
-                            var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel1);							
-							break;
-							      case 2:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel1);	
-								  break;
-								  
-								     case 3:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel1);	
-								  break;
-								    case 4:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel1);	
-								  break;
-								  case 5:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel2);	
-								  break;
-								   case 6:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel2);	
-								  break;
-								   case 7:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel2);	
-								  break;
-								    case 8:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel2);	
-								  break;
-								     case 9:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel3);	
-								  break;
-								     case 10:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel3);	
-								  break;
-								     case 11:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel3);	
-								  break;
-								     case 12:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(hotel3);	
-								  break;
-								    case 13:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list1);	
-								  break;
-								   case 14:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list2);	
-								  break;
-								   case 15:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list3);	
-								  break;
-								   case 16:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list4);	
-								  break;
-								   case 17:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list5);	
-								  break;
-								   case 18:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list6);	
-								  break;
-								   case 19:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list7);	
-								  break;
-								   case 20:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list8);	
-								  break;
-								   case 21:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list9);	
-								  break;
-								   case 22:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list10);	
-								  break;
-								     case 23:
-								    var newli=$('<li>'+hotels[i][j]+'</li>').appendTo(list11);	
-								  break;
-							
-							  }
+							  for(var j=1;j<23;j++){
+                            var newli=$('<li>' +hotels[i][j]+'</li>').appendTo(hotel);
 							  }
                           }
                         }
                           hotel.listview( "refresh" );
                           }).fail(function(msg){console.log(msg);});
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -447,7 +325,7 @@ if(checkCookie("uid")==0){
 <div data-role="collapsible">
 <h3><img src="css/images/login.png"/>Digital Passport</h3>
 <p>
-<iframe src="uploadPassport.php" seamless></iframe>
+<iframe src="uploadPassport.php" seamless="seamless"></iframe>
 <img width="200px" id="myPassport">
 </p>
 </div>
@@ -456,7 +334,7 @@ if(checkCookie("uid")==0){
 <div data-role="collapsible">
 <h3><img src="css/images/login.png"/>Your ID Photo</h3>
 <p>
-<iframe src="uploadPhoto.php" seamless></iframe>
+<iframe src="uploadPhoto.php" seamless="seamless"></iframe>
 <img width="50px" id="myPhoto">
 </p>
 </div>
@@ -486,62 +364,50 @@ if(checkCookie("uid")==0){
             <div id="checkboxes1" data-role="fieldcontain">
               <fieldset data-role="controlgroup" data-type="vertical">
                 <legend> Economy Hotel </legend>
-                 <input id="checkbox1" name='checkbox1[]' type="checkbox" value="Motel" >
-                <input name='checkbox1[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox1" name="Motel" type="checkbox" value="Motel" >
                 <label for="checkbox1"> Motel </label>
-                <input id="checkbox2" name='checkbox2[]' type="checkbox" value="Bed &amp; Breakfast inn">
-                <input name='checkbox2[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox2" name="Bed &amp; Breakfast inn" type="checkbox" value="Bed &amp; Breakfast inn">
                 <label for="checkbox2"> Bed &amp; Breakfast inn </label>
-                <input id="checkbox3" name='checkbox3[]' type="checkbox" value="Boutique Hotel">
-                 <input name='checkbox3[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox3" name="Boutique Hotel" type="checkbox" value="Boutique Hotel">
                 <label for="checkbox3"> Boutique Hotel </label>
-                <input id="checkbox4" name='checkbox4[]'
+                <input id="checkbox4" name="Standardized hotel affiliated/operated by recognized chain"
                                 type="checkbox" value="Standardized hotel affiliated/operated by recongnized chain">
-                                 <input name='checkbox4[]' type="checkbox" hidden="hidden" value='' checked >
                 <label for="checkbox4"> Standardized hotel affiliated / operated by recognized chain </label>
               </fieldset>
             </div>
             <div id="checkboxes2" data-role="fieldcontain">
               <fieldset data-role="controlgroup" data-type="vertical">
                 <legend> Midrange Hotel </legend>
-                <input id="checkbox5" name='checkbox5[]' type="checkbox" value="Bed &amp; Breakfast inn">
-                <input name='checkbox5[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox5" name="Bed &amp; Breakfast inn" type="checkbox" value="Bed &amp; Breakfast inn">
                 <label for="checkbox5"> Bed &amp; Breakfast inn </label>
-                <input id="checkbox6" name='checkbox6[]' type="checkbox" value="Independent Boutique Hotel">
-                <input name='checkbox6[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox6" name="Independent Boutique Hotel" type="checkbox" value="Independent Boutique Hotel">
                 <label for="checkbox6"> Independent Boutique Hotel </label>
-                <input id="checkbox7" name='checkbox7[]'
+                <input id="checkbox7" name="Standardized hotel affiliated/operated by recognized chain"
                                 type="checkbox" value="Standardized hotel affiliated/operated by recognized chain">
-                                <input name='checkbox7[]' type="checkbox" hidden="hidden" value='' checked >
                 <label for="checkbox7"> Standardized hotel affiliated / operated by recognized chain </label>
-                <input id="checkbox8" name='checkbox8[]'
+                <input id="checkbox8" name="Boutique hotel operated by recognized chain"
                                 type="checkbox" value="Boutique hotel operated by recognized chain">
-                                <input name='checkbox8[]' type="checkbox" hidden="hidden" value='' checked >
                 <label for="checkbox8"> Boutique hotel operated by recognized chain </label>
               </fieldset>
             </div>
             <div id="checkboxes3" data-role="fieldcontain">
               <fieldset data-role="controlgroup" data-type="vertical">
                 <legend> Upscale Hotel </legend>
-                <input id="checkbox9" name='checkbox9[]' type="checkbox" value="Independent Boutique Hotel">
-                <input name='checkbox9[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox9" name="Independent Boutique Hotel" type="checkbox" value="Independent Boutique Hotel">
                 <label for="checkbox9"> Independent Boutique Hotel </label>
-                <input id="checkbox10" name='checkbox10[]'
+                <input id="checkbox10" name="Standardized hotel affiliated/operated by recognized chain"
                                 type="checkbox" value="Standardized hotel affiliated/operated by recognized chain">
-                                <input name='checkbox10[]' type="checkbox" hidden="hidden" value='' checked >
                 <label for="checkbox10"> Standardized hotel affiliated / operated by recognized chain </label>
-                <input id="checkbox11" name='checkbox11[]'
+                <input id="checkbox11" name="Boutique hotel operated by recognized chain"
                                 type="checkbox" value="Boutique hotel operated by recognized chain">
-                                <input name='checkbox11[]' type="checkbox" hidden="hidden" value='' checked >
                 <label for="checkbox11"> Boutique hotel operated by recognized chain </label>
-                <input id="checkbox12" name='checkbox12[]' type="checkbox" value="Convention Stype Hotel">
-                <input name='checkbox12[]' type="checkbox" hidden="hidden" value='' checked >
+                <input id="checkbox12" name="Convention Stype Hotel" type="checkbox" value="Convention Stype Hotel">
                 <label for="checkbox12"> Convention Stype Hotel </label>
               </fieldset>
             </div>
           </div>
         </div>
-        <div data-role="collapsible-set" class="ss">
+        <div data-role="collapsible-set">
           <div data-role="collapsible">
             <h3> Technology </h3>
             <div data-role="fieldcontain">
@@ -636,44 +502,12 @@ if(checkCookie("uid")==0){
             </div>
           </div>
            <button data-theme="b" onClick="changePreference()" onKeyPress="changePreference()">Save Changes</button>
-    
-                    
-        
-           
-           
+     <button data-theme="b" onClick="getPreference()" onKeyPress="getPreference()">Get Preference</button>
+           <ul id="userPreference" data-role="listview" data-filter="true" data-filter-placeholder="Search hotels..." data-filter-theme="d"data-theme="d" data-divider-theme="d"></ul>
         </div>
        
       </div>
     </div>
-    <div data-role="collapsible-set">
-    <div data-role="collapsible">
-            <h3 onClick="getNewHotels()"><img src="css/images/login.png"/>See Your Preference</h3>
-            <p>
-
-            <label>Economy Hotel</label> <ul id="economyHotel"></ul>
-          
-            <label>Midrange Hotel</label><ul id="midrangeHotel"></ul>
-            
-             <label>UpscaleHotel</label><ul id="upscaleHotel"></ul>
-             <label> Internet Access in Room</label><ul id="list1"></ul>
-             <label> Business Center</label><ul id="list2"></ul>
-              <label> Internet Reservation </label><ul id="list3"></ul>
-               <label>Internet Check-in </label><ul id="list4"></ul>
-                <label>Mobile Check-In </label><ul id="list5"></ul>
-                 <label> Pet Policy </label><ul id="list6"></ul>
-                  <label> Flexible Check-In  </label><ul id="list7"></ul>
-                   <label>  Room Customization </label><ul id="list8"></ul>
-                    <label>  Childcare  </label><ul id="list9"></ul>
-                     <label> Kitchen </label><ul id="list10"></ul>
-                      <label> Laundry </label><ul id="list11"></ul>
-                      
-             
-  
-            </p>
-             <button data-theme="b" onClick="getPreference()" onKeyPress="getPreference()">Get Preference</button>
-		</div> 
-        </div>
-    
 </div>
   <div data-role="footer" data-theme="b"><h4>Copyright&copy;Asplan2012</h4></div> 
 </div><!-- /page -->

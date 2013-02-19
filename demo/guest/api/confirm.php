@@ -1,7 +1,5 @@
 <?php
-    require_once("connection.php");//Connect to the Database
-    require_once("settings2.php");//Input Settings
-	getPreferences();
+    include_once("connection.php");
     switch ($_SERVER['REQUEST_METHOD'])
     {
         case 'GET':
@@ -9,7 +7,7 @@
             {
                 $email=$_GET["email"];
                 $confirmation=$_GET["confirmation"];
-                $query = sprintf("SELECT * FROM `record` WHERE email='%s' AND confirmation='%s'",mysql_real_escape_string($email),mysql_real_escape_string($confirmation));
+                $query = sprintf("SELECT * FROM `record` WHERE email='%s' AND rid='%s'",mysql_real_escape_string($email),mysql_real_escape_string($confirmation));
                 $result = mysql_query($query);
                 
                 if (!$result) {
@@ -35,7 +33,7 @@
                         $insert=  splittable ($email);
                         if (!$insert) {
                             $message  = 'Invalid query:'.mysql_error();
-                       }else
+                        }else
                         {
                             echo json_encode(array('status'=>'sent','email' => $email,'confirmation'=>$confirmation));
                         }
