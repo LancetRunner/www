@@ -43,10 +43,10 @@ function sendEmail($from,$to,$subject,$message){
 	}
 }
 function sendUserEmail($email,$password){
-	$message="<p>Thank you for registering</p>";
+	$message="<p>sdfs</p>";
 	$to=$email;
 	$from='asplanservices@gmail.com';
-	$subject="Please Verify Your Email";
+	$subject="Please Verify Your Stuff Email";
 	return sendHTMLEmail($from,$to,$subject,$message);
 }
 function sendHTMLEmail($from,$to,$subject,$html1){
@@ -54,6 +54,7 @@ function sendHTMLEmail($from,$to,$subject,$html1){
 	require_once "Mail.php";
 	require_once "Mail/mime.php";
 
+ 
   $text = 'This is a text message.';  
 	 
 
@@ -79,10 +80,11 @@ $message->setHTMLBody($html1);
        
 	$mail = $smtp->send($to, $hdrs, $body);
 
+
 	if (PEAR::isError($mail)) {
-    echo  $mail->getMessage();
+    return $mail->getMessage();
 	} else {
-   echo true;
+    return true;
 	}
 }
 function getEmails(){
