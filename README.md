@@ -47,5 +47,6 @@ This module is intended to allow the hotel staffs to help the guests to checkin.
 ===============
 This module is intended to engage the guests to use our system and view/update the hotel checkin history.
 
+Test
 
 Copyright &copy;Hotel checkin sytem for Asplan Services, SG
