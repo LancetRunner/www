@@ -1,0 +1,11 @@
+name = Annotation Block
+description = Provide block views for Annotation Index and Search.
+
+dependencies[] = annotation_book
+dependencies[] = friends
+
+core = 7.x
+version = 7.18-20121210
+author = Wang Xiaoli
+
+package = eBook Annotation

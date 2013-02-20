@@ -1,0 +1,114 @@
+#block-annotation-block-annotation-index {
+	margin-top: -1.5em !important;
+	border-bottom: 1px solid rgb(211, 215, 217);
+}
+#block-annotation-block-annotation-index .content {
+	min-height: 61px;
+	overflow: auto;
+}
+#block-annotation-block-annotation-index .content::-webkit-scrollbar {
+	width: 8px;
+	background-color: #F5F5F5;
+}
+#block-annotation-block-annotation-index .content::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+#block-annotation-block-annotation-index .content::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #CCC;
+}
+#block-annotation-block-annotation-index #annotation-list {
+	max-height: 450px;
+	overflow: auto;
+}
+#block-annotation-block-annotation-page {
+	margin-top: -1.5em !important;
+	border-bottom: 1px solid rgb(211, 215, 217);
+	width: 220px;
+}
+#block-annotation-block-annotation-page .content {
+	min-height: 61px;
+	overflow: auto;
+}
+#block-annotation-block-annotation-page .content::-webkit-scrollbar {
+	width: 8px;
+	background-color: #F5F5F5;
+}
+#block-annotation-block-annotation-page .content::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+#block-annotation-block-annotation-page .content::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #CCC;
+}
+#block-annotation-block-annotation-page #annotation-list {
+	max-height: 450px;
+	overflow: auto;
+}
+.annotation-teaser {
+	border-bottom: 1px solid rgb(211, 215, 217);
+	margin-top: 5px;
+}
+.annotation-teaser .user-picture {
+	display: inline-block;
+	float: left;
+	padding-left: 0;
+	clear: none;
+}
+.annotation-teaser .user-picture img {
+	width: 45px;
+	height: 45px;
+}
+.annotation-teaser .annotation-content {
+	position: relative;
+	padding-top: 0;
+	padding-left: 46px;
+}
+.annotation-teaser a.more-link {
+	font-size: 110%;
+	float: right;
+}
+.annotation-teaser .attached {
+	position: relative;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+.annotation-teaser .attached.video .video-play {
+	width: 120px;
+	height: 100px;
+	display: block;
+	text-align: center;	
+}
+.annotation-teaser .attached.video .video-thumbnail {
+	width: 100%;
+	vertical-align: middle;
+}
+.annotation-teaser .attached.video .bnt-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.annotation-teaser .attached .image-wrapper {
+	width: 120px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	overflow: hidden;
+}
+.annotation-teaser .attached .image-wrapper img {
+	height: 100%;
+	vertical-align: middle;
+}
+.annotation-teaser .attached.page .page-image {
+	float: left;
+}
+.annotation-teaser .attached.page .right {
+	padding-left: 125px;
+}

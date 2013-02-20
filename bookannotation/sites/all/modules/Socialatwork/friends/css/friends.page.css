@@ -1,0 +1,130 @@
+.groups-wrapper {
+	float: left;
+	width: 150px;
+	marign-top: 5px;
+}
+
+.groups-wrapper ul {
+	list-style: none;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.groups-wrapper ul li {
+	background: url(images/friends.jpg) no-repeat;
+	border-bottom: 1px solid #9CC9EA;
+}
+
+.groups-wrapper ul li a {
+	text-decoration: none;
+	padding-left: 28px;
+}
+
+.groups-wrapper ul li.active {
+	background-color: #96ADBE;
+}
+
+.groups-wrapper ul li.active a {
+	color: white;
+}
+
+.group {
+	padding-left: 160px;
+}
+
+.group .toolbar {
+	border: 1px solid #BFB6A3;
+	background: #FEC;
+	height: 30px;
+}
+
+.group .toolbar .actions {
+	float: left;
+}
+
+.group .toolbar .actions ul {
+	list-style: none;
+	padding: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.group .toolbar .actions ul li {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	padding: 4px;
+}
+
+.group .toolbar .actions ul li a {
+	text-decoration: none;
+	background: url(images/group-btn-bg.png) repeat-x 0;
+	border: 1px #B8D4E8 solid;
+	color: #555;
+	font-weight: bold;
+	line-height: 12px;
+	display: block;
+	padding: 4px 5px;
+	font-size: 12px;
+}
+
+.group .toolbar .pager {
+	float: right;
+	verticle-align: middle;
+	line-height: 28px;
+}
+
+.group .toolbar .pager ul {
+	margin: 0 !important;
+}
+
+.group .friends-wrapper {
+	display: block;
+	width: 100%;
+}
+
+.group .friends-wrapper .friend {
+	border-bottom: 1px solid #9CC9EA;
+	overflow: auto;
+}
+
+.group .friends-wrapper .friend .user-picture {
+	float: left;
+	width: 50px;
+}
+
+.group .friends-wrapper .friend .user-picture a {
+	font-size: 1px;
+}
+
+.group .friends-wrapper .friend .user-picture a img {
+	height: 50px;
+	max-width: 50px;
+}
+
+.group .friends-wrapper .right {
+	padding-left: 60px;
+}
+
+.group .friends-wrapper .friend .username {
+	font-weight: bold;
+}
+
+.group .friends-wrapper .friend .actions {
+	float: right;
+}
+
+/* friends selector */
+#edit-friends .form-type-checkbox {
+	width: 60px;
+	height: 100px;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+}
+
+#edit-friends .user-picture a img {
+	width: 50px;
+	height: 50px;
+	margin: 0px;
+}

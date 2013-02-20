@@ -1,0 +1,33 @@
+.friend-request .approve {
+	background: url('images/approve.png') no-repeat;
+	padding-left: 18px;
+}
+
+.friend-request .remove,
+.friend-request .decline,
+.friend-request .cancel {
+	background: url('images/cancel.png') no-repeat;
+	padding-left: 18px;
+}
+
+.friend-request .user-picture {
+	float: left;
+	width: 50px;
+}
+
+.friend-request .user-picture a {
+	font-size: 1px;
+}
+
+.friend-request .user-picture a img {
+	max-height: 50px;
+	max-width: 50px;
+}
+
+.friend-request .user-info {
+	padding-left: 60px;
+}
+
+.friend-request .user-info .username {
+	font-weight: bold;
+}
